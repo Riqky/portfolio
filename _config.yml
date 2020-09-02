@@ -1,2 +1,4 @@
 remote_theme: mmistakes/minimal-mistakes
 title: Rick's portfolio
+plugins:
+  - jekyll-include-cache
