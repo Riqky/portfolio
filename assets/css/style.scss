@@ -3,8 +3,6 @@
 
 @import "{{ site.theme }}";
 
-section {
-    //width:800px;
-    /*float:right;
-    padding-bottom:50px;*/
-  }
+.page {
+    width: calc(100% - #{$right-sidebar-width-narrow});
+  
