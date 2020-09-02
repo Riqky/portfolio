@@ -1,0 +1,9 @@
+main:
+  - title: "Home"
+    url: "/"
+  - title: "About me"
+    url: "/about"
+  - title: "Planning"
+    url: "planning"
+  - title: "R&D Project"
+    url: "rnd"

@@ -1,0 +1,11 @@
+Rick Theeuwes:
+  name: "Rick Theeuwes"
+  bio: "A hacker with a passion for development."
+  avatar: "/assets/images/avatar.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw -fa-envelope-square"
+      url: "mailto:r.theeuwes@student.fontys.nl"
+    - label: "Github"
+      icon: "fab fa-fw fa-github-square"
+      url: "https://github.com/riqky"
