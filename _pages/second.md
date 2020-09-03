@@ -10,7 +10,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-
+toc: true
 ---
 
 ## Welcome to GitHub Pages
