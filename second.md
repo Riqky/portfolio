@@ -1,3 +1,8 @@
+---
+permalink: /about/
+author: Rick Theeuwes
+---
+
 - Bulleted
 - List
 
