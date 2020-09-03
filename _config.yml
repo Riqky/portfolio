@@ -11,7 +11,7 @@ author:
   avatar: "/assets/images/avatar.jpg"
   links:
     - label: "Email"
-      icon: "fas fa-fw -fa-envelope-square"
+      icon: "fas fa-envelope"
       url: "mailto:r.theeuwes@student.fontys.nl"
     - label: "Github"
       icon: "fab fa-fw fa-github-square"
