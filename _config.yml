@@ -2,6 +2,9 @@ remote_theme: mmistakes/minimal-mistakes
 title: Rick's portfolio
 plugins:
   - jekyll-include-cache
+
+include: ["_pages"]
+
 author:
   name: "Rick Theeuwes"
   bio: "A hacker with a passion for development."
