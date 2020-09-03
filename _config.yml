@@ -8,6 +8,7 @@ include: ["_pages"]
 author:
   name: "Rick Theeuwes"
   bio: "A hacker with a passion for development."
+  avatar: "/assets/images/avatar.jpg"
   links:
     - label: "Email"
       icon: "fas fa-fw -fa-envelope-square"
