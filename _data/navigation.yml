@@ -7,3 +7,5 @@ main:
     url: "/planning/"
   - title: "R&D Project"
     url: "/rnd/"
+  - title: "portfolio"
+    url: "/portfolio/"

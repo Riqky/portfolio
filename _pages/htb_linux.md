@@ -1,3 +1,18 @@
+---
+permalink: /htb_linux/
+author: Rick Theeuwes
+
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+toc: true
+---
+
 # Linux Hack The Box Writeup for Tabby
 
 ## Enumeration

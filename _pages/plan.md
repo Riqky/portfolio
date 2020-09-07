@@ -1,5 +1,5 @@
 ---
-permalink: /plan
+permalink: /planning/
 author: Rick Theeuwes
 
 defaults:
