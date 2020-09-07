@@ -1,5 +1,5 @@
 ---
-permalink: /htb/
+permalink: /portfolio/htb/
 author: Rick Theeuwes
 
 defaults:
