@@ -30,7 +30,7 @@ But, how do you read these dex files? First there is `apktool` ([link](https://i
 
 First, I made a simple hello world app, that I could test the reversing with:
 
-![hello](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/hello.gif)
+![hello](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/hello.gif)
 
 This is all the app does, just a simple function. I compiled it to an apk, now let's pull it apart. First, I run `dex2jar`:
 
@@ -46,7 +46,7 @@ jd-gui
 
 And we open the `app-debug.jar`. We are greeted by three folders, one of which looks familiar.
 
-![libs](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/libs.png)
+![libs](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/libs.png)
 
 `com.example.hello_world` must be the code I've written. The other two folders are filled with obfuscated classes, probably part of the android library. My own class looks a little bit different, this is the result of the optimation done by the java compiler.
 
@@ -123,13 +123,13 @@ Alright, now we know the structure of a normal java-based android app, let's loo
 
 Alright, so the first steps are the same, `dex2jar` and `jd-gui`
 
-![webview](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/webview.png)
+![webview](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/webview.png)
 
 Webview? As expected, it did not compile to a java app, this is only the wrapper that executes html and js files. So, let's try to find the js files.
 
 After some `greb`-ing, I found the folder `assets/www` filled with js-files and a `index.html`. Perfect, now we have to check whether or not these are the js-files that I wrote, so I searched for a literal string that I am sure is present in the source:
 
-![js](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/js.png)
+![js](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/js.png)
 
 As you can see, the js is heavily obfuscated during the compiling, but it is still present. With this we could reverse the js and find out how the app works. 
 
