@@ -2,5 +2,10 @@
     "cSpell.words": [
         "before",
         "flag"
+    ],
+    "spellright.language": [],
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
     ]
 }

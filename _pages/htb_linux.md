@@ -92,7 +92,7 @@ Terrific, we can read files. I brought the request over to burp-suite for easier
 
 ![burp](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/burp.png)
 
-Alright, before we continue, let's see why we can read files. The php file get the GET-parameter named file. Then it puts `files/` in front of it and reads the file. Why can we read files outside of the folders files? `fopen` reads a file from a given path, without any checks or sanitation. If we back out of the folder `files` with `..` we are in the folder with `news.php`, probaly in the folder `/var/www/html` as this is the default path for Apache. So, if we keep going back we reach the system's root and we can go to any path from there. I choose to check `/etc/passwd` because this file is almost always there and readable for all users.
+Alright, before we continue, let's see why we can read files. The php file get the GET-parameter named file. Then it puts `files/` in front of it and reads the file. Why can we read files outside of the folder `files`? `fopen` reads a file from a given path, without any checks or sanitation. If we back out of the folder `files` with `..` we are in the folder with `news.php`, probaly in the folder `/var/www/html` as this is the default path for Apache. So, if we keep going back we reach the system's root and we can go to any path from there. I choose to check `/etc/passwd` because this file is almost always there and readable for all users.
 
 So we can read files without limits. Great! But we dont't really have a lot to check right now, let's check the tomcat page first.
 
@@ -138,7 +138,7 @@ curl --location --request PUT 'http://10.10.10.194:8080/manager/text/deploy?path
 
 Then we just navigate to `http://10.10.10.194:8080/shell` and we catch a reverse shell!
 
-I then always use some simple steps to upgrade the shell to a proper stty, so I can use taba and Ctrl+C.
+I then always use some simple steps to upgrade the shell to a proper stty, so I can use tab and Ctrl+C.
 
 ![shell](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/shell.png)
 
