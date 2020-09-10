@@ -11,6 +11,7 @@ defaults:
       layout: single
       author_profile: true
 toc: true
+title: Tabby
 ---
 
 # Linux Hack The Box Writeup for Tabby

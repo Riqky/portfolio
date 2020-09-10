@@ -11,10 +11,9 @@ defaults:
       layout: single
       author_profile: true
 toc: true
+title: Learning Plan
 ---
 
-
-# Learning Plan
 
 ## Skills
 

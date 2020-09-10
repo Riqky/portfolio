@@ -11,8 +11,7 @@ defaults:
       layout: single
       author_profile: true
 toc: true
+title: Hack The Box
 ---
-
-# Hack The Box
 
 - [Writeup Hack The Box Linux box (Tabby)](htb_linux/)
