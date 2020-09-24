@@ -32,8 +32,8 @@ Here, the shackle is closed and the latches are pointing out.
 
 And here the shackle is open and the latches are moved inwards.
 
-![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/shackle_open)
-.jpg
+![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/shackle_open.jpg)
+
 Now, let's move on to the lock-mechanism itself: The Core. The core is simply a brass cylinder with a key-way and some holes. The holes in the core line up with long holes in the body, inside these holes are the pins, counterpins and the springs.
 
 ![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/pins.jpg)
