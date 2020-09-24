@@ -18,7 +18,9 @@ title: Portfolio
 ## Exercises
 
 - [Android](android/)
+- [Lock picking](lockpicking/)
 
 ## Challenges
 
 - [Hack The Box](htb/)
+

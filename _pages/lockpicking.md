@@ -28,15 +28,15 @@ So, from top to bottom, the shackle is the part you attach to something, like a 
 
 Here, the shackle is closed and the latches are pointing out.
 
-![shackle_closed](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/shackle_closed)
+![shackle_closed](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/shackle_closed.jpg)
 
 And here the shackle is open and the latches are moved inwards.
 
 ![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/shackle_open)
-
+.jpg
 Now, let's move on to the lock-mechanism itself: The Core. The core is simply a brass cylinder with a key-way and some holes. The holes in the core line up with long holes in the body, inside these holes are the pins, counterpins and the springs.
 
-![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/pins)
+![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/pins.jpg)
 
 The pins is usually a small cylinder with one flat side and one pointy side. The pointy side rests on the key once it is inserted. The other side is in contact with the counterpin. The pins length usually varies. The counterpin is a small cylinder with two flat sides. It rests on the pin and the spring, the counterpins are all the same length. lastly, the spring is there to keep pressure on the pins, so they cannot move around in the body.
 

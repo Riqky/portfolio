@@ -14,7 +14,7 @@ toc: true
 title: Buff
 ---
 
-# Linux Hack The Box Writeup for Buff
+# Windows Hack The Box Writeup for Buff
 
 ## Enumeration
 
@@ -24,7 +24,7 @@ As always, we start of with an nmap:
 sudo nmap 10.10.10.198 -p 7680,8080 -sC -sV -oN nmap.txt
 ```
 
-Before this command I ran `nmap 10.10.10.198 -p-` to get the ports 7680 and 8080. The flag `-sC` stands for default enum-scripts, and the `-sV` flag is for the version enumeration scripts. `-oN` states that all the text-results should be saved to the file named `nmap.txt`. 
+Before this command I ran `nmap 10.10.10.198 -p-` to get the ports 7680 and 8080. The flag `-sC` stands for default enum-scripts, and the `-sV` flag is for the version enumeration scripts. `-oN` states that all the text-results should be saved to the file named `nmap.txt`.
 
 With the result:
 
