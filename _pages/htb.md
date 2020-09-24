@@ -14,5 +14,5 @@ toc: true
 title: Hack The Box
 ---
 
-- [Writeup Hack The Box Linux box (Tabby)](../htb_linux/)
-- [Writeup Hack The Box Windows box (Buff)](../htb_windows)
+- [Writeup Hack The Box Linux box (Tabby)](portfolio/htb_linux/)
+- [Writeup Hack The Box Windows box (Buff)](portfolio/htb_windows)
