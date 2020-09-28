@@ -1,4 +1,4 @@
----
+/*---
 permalink: /portfolio/htb_linux/
 author: Rick Theeuwes
 
@@ -12,7 +12,7 @@ defaults:
       author_profile: true
 toc: true
 title: Tabby
----
+---*/
 
 # Linux Hack The Box Writeup for Tabby
 
