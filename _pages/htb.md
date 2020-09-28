@@ -14,5 +14,7 @@ toc: true
 title: Hack The Box
 ---
 
-- [Writeup Hack The Box Linux box (Tabby)](portfolio/htb_linux/)
-- [Writeup Hack The Box Windows box (Buff)](portfolio/htb_windows)
+### Ask me for the password
+
+- [Writeup Hack The Box Linux box (Tabby)](assets/htb_tabby.zip)
+- [Writeup Hack The Box Windows box (Buff)](assets/htb_windows.zip)
