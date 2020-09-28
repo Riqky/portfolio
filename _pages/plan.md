@@ -126,3 +126,13 @@ The exercises are labeled with MoSCoW (Links to an external site.) labels.
 
 7. C: Contribute to the INTERSECT (Links to an external site.) research by demonstrating known or new attack scenario's in 'Smart Energy' applications, for example in electric vehicle charging networks end endpoints/apps/..., smart energy home applications and energy systems, etc.
 Note: You could then also use this as a base for the article that you will write and publish at the end of the semester.
+
+### My own projects
+
+1. Describe a new and or current exploit and use it.
+
+2. Hacking with bad-USB and WHID
+
+3. Hack the box Fortress
+
+4. 
