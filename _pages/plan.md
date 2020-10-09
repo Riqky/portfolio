@@ -62,21 +62,37 @@ Main soft skills I need are documentation and feedback. I often forget or procra
 Exercises that you can use to learn and train your red teaming knowledge and skills:
 Note: The exercises are labeled with MoSCoW (Links to an external site.) labels.
 
-1. -M: Find a couple of red teaming and pen-tester vacancies with job descriptions and analyse what task and skills are described. Add to and update your learning plan as needed.
+1. M: Find a couple of red teaming and pen-tester vacancies with job descriptions and analyse what task and skills are described. Add to and update your learning plan as needed.
 
-2. -M: Experiment with phishing tooling in a controlled, separated  environment (do not send phishing mails without a written consent!)
+    I already am very active with looking for vacanies for mmy internship, so I just have to write this down.
 
-3. M: Read about covert channels (see e.g. [8][9]), find applications of covert channels in hacking and red teaming, and set-up one or several experimental applications of covert channels
+2. M: Experiment with phishing tooling in a controlled, separated  environment (do not send phishing mails without a written consent!)
 
-4. -M: Set up your personal toolbox environments for pen-testing and red teaming.
+    I don't know who to send these phishing-mail, if any. I do have a virtual Machine enviroment for local testing.
 
-5. -C: Pick a lock. Study the security of physical locks and pick a lock with a lock picking set.
+3. M: Read about covert channels (see e.g. [8][9]), find applications of covert channels in hacking and red teaming, and set-up one or several experimental applications of covert channels.
 
-6. -S: Learn how to do reversing of smartphone apps (for android, iphone, ...).
+    I have some old hardware laying around (laptop/raspberry) I can use to test this on, or maybe this will also work on my vm-enviroment, where I can place a IDS.
 
-7. -S: Complete challenges in all categories on different levels in Hack the Box.
+4. M: Set up your personal toolbox environments for pen-testing and red teaming.
+
+    This will also be done in my virtual enviroment. 
+
+5. C: Pick a lock. Study the security of physical locks and pick a lock with a lock picking set.
+
+    I have some lod and unused locks and a lockpicking set.
+
+6. S: Learn how to do reversing of smartphone apps (for android, iphone, ...).
+
+    On my local Kali VM I can look into my own and others app.
+
+7. S: Complete challenges in all categories on different levels in Hack the Box.
+
+    This will mostly be done om my Kali machine.
 
 8. -S: With a red teaming perspective visit a local building (school, library, store), document your observations AFTERWARDS from a security point of view (people, processes, technology) also reflect on your experience. Act PASSIVELY, don't do anything illegal or anything that could lead to suspicion  or inconvenience: do not make notes or photos, visit rooms you are not supposed to, try fire doors, etc.
+
+    I might be able to come to my mother's workplace, where I can sit down and check all of the physical security.
 
 ### Challenges
 
@@ -85,7 +101,11 @@ Note: The exercises are labeled with MoSCoW (Links to an external site.) labels.
 
 1. -M: Own one of the active Linux based machines in Hack the Box and create a write-up of it.
 
+    This can be done with the VPN-environment of Hack The Box and my own virtual environment.
+
 2. -M: Own one of the active Windows based machines in Hack the Box and create a write-up of it.
+
+    This can be done with the VPN-environment of Hack The Box and my own virtual environment.
 
 3. -M: Set up and perform a pen-test on an (early version of a potentially shippable) product of one of the cyber security R&D project.
 

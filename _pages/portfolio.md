@@ -19,6 +19,7 @@ title: Portfolio
 
 - [Android](android/)
 - [Lock picking](lockpicking/)
+- [Keystroke injection](whid/)
 
 ## Challenges
 

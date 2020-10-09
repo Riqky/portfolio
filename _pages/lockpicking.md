@@ -24,6 +24,8 @@ In order to be able to pick a lock, you first need to understand how it works, a
 
 ![lingo](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/anatomy.jpg)
 
+([source](https://www.virosecurityclub.com/the-anatomy-of-a-padlock/))
+
 So, from top to bottom, the shackle is the part you attach to something, like a door or some chains. The latches are brass cylinders with a pointy tip and a spring in the middle. These latches exert force onto the shackle to prevent it from moving. When the lock is opened the latches move inwards and the shackle is released.
 
 Here, the shackle is closed and the latches are pointing out.
@@ -53,6 +55,8 @@ You insert the end of the tension-tool inside the keyway. Then you apply some cl
 Then you insert the pick and push every pin in, one by one. If you push the 'correct' pin, the counterpin will get caught on the core and the core will rotate ever so slightly. Once every counterpin is caught, the core will be able to rotate.
 
 ![howto](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/howto.gif)
+
+([source](https://apexridge.com/knowing-why/))
 
 Sometimes a pin won't move, this is because there is too much friction between the pin and the core, you should relive a little bit of tension to solve this, but not too much, or all your pins will fall back. 
 Another technique to open a lock is raking, a rake is like a pick, but with a lot of bumps. Raking looks a lot like picking, but you push all the pins up at the same time, allowing you to find the correct pins much faster.
@@ -106,7 +110,7 @@ The key goes through the small holes in the wavers, pushing it up. Underneath th
 
 ### Pin tumbler lock
 
-A pin tumber lock is what I explained in the first part of this page. I am yet to pick this lock (not the clear one), because of some security precautions in this lock. Let's take it apart and see what these precautions are.
+A pin tumbler lock is what I explained in the first part of this page. I am yet to pick this lock (not the clear one), because of some security precautions in this lock. Let's take it apart and see what these precautions are.
 
 The lock:
 
@@ -128,7 +132,7 @@ As the last one, we have a cheap padlock I bought to practice on. I decided to b
 
 ![cheap_lock](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/cheap_lock.jpg)
 
-I cut the rubber protection off and immediately noticed something, the locks body appears to be made of plastic. Upon removing the pins keeping the iron plates in place, and the iron plates, this is comfirmed. The plating is iron, the core is brass, but the body itself is plastic! Plastic is very weak, so the lock can be forced open with a wrench on the shackle.
+I cut the rubber protection off and immediately noticed something, the locks body appears to be made of plastic. Upon removing the pins keeping the iron plates in place, and the iron plates, this is confirmed. The plating is iron, the core is brass, but the body itself is plastic! Plastic is very weak, so the lock can be forced open with a wrench on the shackle.
 
 ![body_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/body_open.jpg)
 

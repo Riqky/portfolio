@@ -9,3 +9,5 @@ main:
     url: "/rnd/"
   - title: "Portfolio"
     url: "/portfolio/"
+  - title: "Change log"
+    url: "change"
