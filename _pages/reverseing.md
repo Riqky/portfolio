@@ -1,5 +1,5 @@
 ---
-permalink: /portfolio/htb_challenges/
+permalink: /portfolio/challenges/
 author: Rick Theeuwes
 
 defaults:
