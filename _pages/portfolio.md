@@ -17,6 +17,7 @@ title: Portfolio
 
 ## Exercises
 
+- [Workspace](workspace/)
 - [Android](android/)
 - [Lock picking](lockpicking/)
 - [Keystroke injection](whid/)
