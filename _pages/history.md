@@ -19,3 +19,4 @@ title: Change Log
 | 2-10 | Created changelog, added whid and fixed feedback |
 |5-10|Created HTB Challenges|
 |27-10|Finished HTB Challenges and workspace|
+|17-10|Added bvsr, covert, home, phsical, rnd and workspace. Small fix in whid|

@@ -49,7 +49,7 @@ My most used VM must be the Kali-Linux VM. This is an install of the latest vers
 
 #### Reverseing
 
-For the reverse engineering challenges, I started with my Kali, but this proved to be somewhat unconventional, so I installed `Remnux`. This is a ubuntu machine with all linux based reverseing tools installed. Such as Ghidra, Cutter and various checkers. For windows based binaries I have a Windows 10 machine with ollydbg installed.
+For the reverse engineering challenges, I started with my Kali, but this proved to be somewhat unconventional, so I installed `Remnux`. This is a Ubuntu machine with all linux based reverseing tools installed. Such as Ghidra, Cutter and various checkers. For windows based binaries I have a Windows 10 machine with ollydbg installed.
 
 #### Windows 10
 

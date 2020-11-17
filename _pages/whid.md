@@ -15,6 +15,7 @@ title: Hacking with WHID
 ---
 
 ## Persistent reverse shell
+TODO encryption
 
 A reverse shell is great, but what if he stayed, no matter what? Using a Bad-USB of any kind, you can inject a payload to create a persistent reverse shell.
 
