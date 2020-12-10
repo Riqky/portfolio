@@ -16,14 +16,14 @@ title: HTB CTF
 
 ## Gunship
 
-Gunship is an easy web challenge with one star difficulty. It is a simple website that asks you for a name of a band member you like best and then responds with `Hello guest, thank you for letting us know!`. After throwing some tests at it, we started looking through the code. There we found this:
+Gunship is an easy web challenge with one-star difficulty. It is a simple website that asks you for a name of a band member you like best and then responds with `Hello guest, thank you for letting us know!`. After throwing some tests at it, we started looking through the code. There we found this:
 
 ```js
 // unflatten seems outdated and a bit vulnerable to prototype pollution
 // we sure hope so that po6ix doesn't pwn our puny app with his AST injection on template engines
 ```
 
-Ah! This application is vulnerable for AST injection! And apparently some po6ix is able to pwn this. After a quick google we found the page of this po6ix and he has a nice blog post about AST injection. ([source](https://blog.p6.is/AST-Injection/)) AST pollution is a where you can abuse JavaScript's prototype system to write into the memory. Basically, JS's prototyping is setting a default static value to an object, with is always read first. So being able to write into objects is a very good way to exploit a application.
+Ah! This application is vulnerable for AST injection! And apparently some po6ix is able to pwn this. After a quick google we found the page of this po6ix and he has a nice blog post about AST injection. ([source](https://blog.p6.is/AST-Injection/)) AST pollution is a where you can abuse JavaScript's prototype system to write into the memory. Basically, JS's prototyping is setting a default static value to an object, with is always read first. So being able to write into objects is a very good way to exploit an application.
 
 There first tested payload is:
 
@@ -91,4 +91,4 @@ HTB{wh3n_l1f3_g1v3s_y0u_p6_st4rt_p0llut1ng_w1th_styl3}
 
 ## Waffles
 
-The second challenge I worked on was waffles, this was a more difficult web challenge. A php website where you can order a waffle or an icecream.
+The second challenge I worked on was waffles, this was a more difficult web challenge. A PHP website where you can order a waffle or icecream.

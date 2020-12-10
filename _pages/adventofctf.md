@@ -1,3 +1,19 @@
+---
+permalink: /portfolio/advent/
+author: Rick Theeuwes
+
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+toc: true
+title: Advent of CTF
+---
+
 ## Day 0
 
 *Do you remember the flag in the teaser website?*
