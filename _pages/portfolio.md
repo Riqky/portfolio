@@ -14,15 +14,11 @@ toc: true
 title: Portfolio
 ---
 
-
-## Exercises
-
 - [Workspace](workspace/)
 - [Android](android/)
 - [Lock picking](lockpicking/)
 - [Keystroke injection](whid/)
 - [Covert channels](covert/)
-
-## Challenges
-
+- [Workspace](workspace/)
 - [Hack The Box](htb/)
+- [phisical](phisical/)

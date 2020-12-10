@@ -58,9 +58,8 @@ Then you insert the pick and push every pin in, one by one. If you push the 'cor
 
 ([source](https://apexridge.com/knowing-why/))
 
-Sometimes a pin won't move, this is because there is too much friction between the pin and the core, you should relive a little bit of tension to solve this, but not too much, or all your pins will fall back. 
+Sometimes a pin won't move, this is because there is too much friction between the pin and the core, you should relive a little bit of tension to solve this, but not too much, or all your pins will fall back.
 Another technique to open a lock is raking, a rake is like a pick, but with a lot of bumps. Raking looks a lot like picking, but you push all the pins up at the same time, allowing you to find the correct pins much faster.
-
 
 ## My lockpicking and dissembly
 

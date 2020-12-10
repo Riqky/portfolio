@@ -11,10 +11,8 @@ defaults:
       layout: single
       author_profile: true
 toc: true
-title: Android
+title: Android reverse engineering
 ---
-
-# Android reverse engineering
 
 ## Intro
 
@@ -132,5 +130,3 @@ After some `greb`-ing, I found the folder `assets/www` filled with js-files and 
 ![js](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/js.png)
 
 As you can see, the js is heavily obfuscated during the compiling, but it is still present. With this we could reverse the js and find out how the app works. 
-
-## Real life

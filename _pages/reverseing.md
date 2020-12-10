@@ -87,7 +87,7 @@ In the second, it builds a second password, but it quickly becomes evident that 
 
 ![second_function](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/reverse/second_function.png)
 
-For this, I am going to use `cutter` a FOSS tool, much like IDA Pro, with a debugger, and reverser. Cutter also has a great graph function, which allows you to visualize the jumps the program makes. With this information I went looking for the check if the second password is correct, which I found in the dissassembler, and opened in the graph:
+For this, I am going to use `cutter` a FOSS tool, much like IDA Pro, with a debugger, and reverser. Cutter also has a great graph function, which allows you to visualize the jumps the program makes. With this information I went looking for the check if the second password is correct, which I found in the disassembler, and opened in the graph:
 
 ![graph](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/reverse/graph.png)
 

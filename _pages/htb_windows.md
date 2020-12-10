@@ -102,7 +102,6 @@ In order to execute the script, we navigate to `http://10.10.10.198:8080/upload/
 And there it is, a reverse shell!
 This also gives us access to the `user.txt` file, located in `C:\Users\shaun\Desktop\user.txt`
 
-
 ## Privelege escaltion
 
 So, how do we go from here? Well, after looking around shaun's home folder, I found `CloudMe_1112.exe` in his Downloads folder. This means that `Cloud Me` is installed, with version number `1112`, or `1_11_2`. This version is vulnerable to a buffer overflow.

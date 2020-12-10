@@ -24,18 +24,18 @@ I have a filled portfolio with outcomes and got positive feedback from my teache
 
 My technical skills have been proven in my portfolio thus far, social engineering will be added later, as we are still working this out.
 
-### Procedural skills - Beginning
+### Procedural skills - Proficient
 
--
+I start every subject with research, this is evident in my portfolio, as I give some background on the subject before I dive into the practical part.
 
 ### Technical R&D - Beginning
 
 My portfolio contains a chapter about my work on the R&D project, however, this chapter is brand new and can be improved upon.
 
-### Methodical R&D project - Beginning
+### Methodical R&D project - Proficient
 
-My portfolio contains a chapter about my work on the R&D project, however, this chapter is brand new and can be improved upon.
+My portfolio contains a chapter about my work on the R&D project, this describes my steps taken in the methodical research.
 
-### Collaboration and Communication - Beginning
+### Collaboration and Communication - Proficient
 
-My portfolio contains a chapter about my work on the R&D project, however, this chapter is brand new and can be improved upon.
+My portfolio contains a chapter about my work on the R&D project.

