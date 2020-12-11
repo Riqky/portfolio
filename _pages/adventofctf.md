@@ -18,9 +18,9 @@ title: Advent of CTF
 
 *Do you remember the flag in the teaser website?*
 
-The CTF is kicked of with a callback to a teaser website. I have never looked at this website, but this can be fixed by using wayback machine. There we see that there was a snapshot made on the 12th of November. This sends you to a beautiful website with a banner teaser, and a flag:
+The CTF is kicked off with a callback to a teaser website. I have never looked at this website, but this can be fixed by using wayback machine. There we see that there was a snapshot made on the 12th of November. This sends you to a beautiful website with a banner teaser, and a flag:
 
-[day0banner](/assets/images/advent/day0banner.png)
+![day0banner](/assets/images/advent/day0banner.png)
 
 After decryption `NOVI{HEY_1S_Th1S_@_Fla9?}` comes out.
 
@@ -42,7 +42,7 @@ Today, we are greeted by a login page. After an attempt at logging in, `admin-ad
 
 We find a login page again. But this time it does not accept random input. The form executes `checkPass();` on submit, this method is quickly found in `login.js`.
 
-[day3login](/assets/images/advent/day3login.png)
+![day3login](/assets/images/advent/day3login.png)
 
 So, the password is the username plus '`-NOVI`', base64 encoded. Alright, that gives me admin and YWRtaW4tTk9WSQ== as credentials. Logging in gives us `NOVI{javascript_is_not_s@fe}`.
 
@@ -50,11 +50,11 @@ So, the password is the username plus '`-NOVI`', base64 encoded. Alright, that g
 
 Today, the page just says `Hello, User 0`. After a short period a token is added in the URL: `eyJ1c2VyaWQiOjB9.1074`. It appears to be once again a base64 token, but with something else. The first part decodes to `{"userid":0}"`. Then I found the javascript, and oh boy.
 
-![day4js](assets/images/advent/day4js.png)
+![day4js](/assets/images/advent/day4js.png)
 
 The javascript is obfuscated to make it very difficult to read. But, it seems that the important method is readable. `check()` gets a key out of the local storage, checks if it is not in the URL and then validates the checksum in the key against a checksum calculated by `calculate(text)`. So, if we want to fake the key, we also need to get its checksum. I first tried to reverse the code, in order to understand how to bypass the check, until I realised that I can just run it locally. So, that is what I did, assuming that I need to become user 1.
 
-![day4result](assets/images/advent/day4result.png)
+![day4result](/assets/images/advent/day4result.png)
 
 Then we set `eyJ1c2VyaWQiOjF9.1075` as a token in our local storage and refresh the page without the GET parameters. This gives us the flag: `NOVI{0bfusc@t3_all_U_w@n7}`.
 
@@ -123,11 +123,11 @@ Two very interesting entries. The first one gives us a base64 string: `RW5jb2Rpb
 
 What a surprise, a login page. This time, regardless of what we enter, we are sent to a page with `Hey user your password is incorrect.`. So, something really stupid, but what if we log in with `user` and `incorrect`? Then we get to see `The naughty list is currently empty....`. This helps us a little further. Then looking into the storage we find a JWT Token:
 
-![day9jwt](assets/images/advent/day9jwt.png)
+![day9jwt](/assets/images/advent/day9jwt.png)
 
 What if we edit the payload to make ourselves admin, and edit the header to set the encryption to none?
 
-![day9edited](assets/images/advent/day9edited.png)
+![day9edited](/assets/images/advent/day9edited.png)
 
 And there we have a flag! `NOVI{Jw7_f@ilure_in_n0ne}`
 
@@ -135,10 +135,10 @@ And there we have a flag! `NOVI{Jw7_f@ilure_in_n0ne}`
 
 This time we have a page that says that there is only one person on the naughty list. Once again there is something interesting in the storage: `eyJwYWdlIjoibWFpbiIsInJvbGUiOiIxMmRlYTk2ZmVjMjA1OTM1NjZhYjc1NjkyYzk5NDk1OTY4MzNhZGM5In0=`, which decrypts to `{"page":"main","role":"12dea96fec20593566ab75692c9949596833adc9"}`. Let's see of we can find another page, by changing `"page":"main"` to `"page":"naughty"`. This gives me a error:
 
-![day10error](assets/images/advent/day10error.png)
+![day10error](/assets/images/advent/day10error.png)
 
 So, PHP uses includes on the user input. We *could* exploit this with a reverse shell, but I think this is a bit overkill. Let's just try some other payloads, such as `"page":"flag"`.
 
-![day10step](assets/images/advent/day10step.png)
+![day10step](/assets/images/advent/day10step.png)
 
 Well, that is great, but we need to get promoted. The second part of the cookie appears to be a hash, a simple online look-up table tells us that this is `user` hashed with sha1. so, what if we hash `admin` with sha1? We end up with the payload `'{"page":"flag","role":"d033e22ae348aeb5660fc2140aec35850c4da997"}'` encoded to `eyJwYWdlIjoiZmxhZyIsInJvbGUiOiJkMDMzZTIyYWUzNDhhZWI1NjYwZmMyMTQwYWVjMzU4NTBjNGRhOTk3In0K`. This gives us the flag `NOVI{LFI_1s_ask1ng_f0r_tr0bl3}`.
