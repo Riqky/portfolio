@@ -16,13 +16,13 @@ title: Android reverse engineering
 
 ## Intro
 
-Reversing an android app can be pretty useful, because doing a vulnerability research is a lot easier with the source code. Even if you must reverse the source yourself. A lot of vulnerabilities in android app also requires you to edit the code to circumvent front-end-only restrictions.
+Reversing an android app can be pretty useful, because doing vulnerability research is a lot easier with the source code. Even if you must reverse the source yourself. A lot of vulnerabilities in Android app also requires you to edit the code to circumvent front-end-only restrictions.
 
 ## Theoretical research
 
-An `apk` file is basically a `zip` file with a certain structure. Every apk contains a `manifest.mf` for all the meta-data, a `lib` folder for all the platform dependent code, a certificate, a `res` folder containing recourses as `xml` files, assets to use at runtime and `classes.dex`. The last one is the most interesting, because this is the java-code compiled to a dex file. Dex are run on `Dalvik` VM's. Dalvik itself is not used anymore, but its structure has not changed.
+An `APK` file is a `ZIP` file with a certain structure. Every APK contains a `manifest.mf` for all the meta-data, a `lib` folder for all the platform-dependent code, a certificate, a `res` folder containing recourses as `XML` files, assets to use at runtime and `classes.dex`. The last one is the most interesting, because this is the java-code compiled to a dex file. Dex are run on `Dalvik` VM's. Dalvik itself is not used anymore, but its structure has not changed.
 
-But, how do you read these dex files? First there is `apktool` ([link](https://ibotpeaches.github.io/Apktool/documentation/)), a tool that unpacks `.apk` files and also decodes compiled sources such as `xml` files. This gives you more access and insight into the resources. Then there is `dex2jar` ([link](https://github.com/pxb1988/dex2jar)), this tool converts the dex file into a jar-file (a normal java executable). A jar file can be read with `jd-gui` ([link](http://java-decompiler.github.io/)). If you want you can save this code and recompile with android studio.
+But, how do you read these dex files? First there is `apktool` ([link](https://ibotpeaches.github.io/Apktool/documentation/)), a tool that unpacks `.apk` files and also decodes compiled sources such as `XML` files. This gives you more access and insight into the resources. Then there is `dex2jar` ([link](https://github.com/pxb1988/dex2jar)), this tool converts the dex file into a jar-file (a normal java executable). A jar file can be read with `JD-GUI` ([link](http://java-decompiler.github.io/)). If you want you can save this code and recompile with android studio.
 
 ## Practical
 
@@ -30,7 +30,7 @@ First, I made a simple hello world app, that I could test the reversing with:
 
 ![hello](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/hello.gif)
 
-This is all the app does, just a simple function. I compiled it to an apk, now let's pull it apart. First, I run `dex2jar`:
+This is all the app does, just a simple function. I compiled it to an APK, now let's pull it apart. First, I run `dex2jar`:
 
 ```bash
 d2j-dex2jar.sh app-debug.apk
@@ -46,7 +46,7 @@ And we open the `app-debug.jar`. We are greeted by three folders, one of which l
 
 ![libs](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/libs.png)
 
-`com.example.hello_world` must be the code I've written. The other two folders are filled with obfuscated classes, probably part of the android library. My own class looks a little bit different, this is the result of the optimation done by the java compiler.
+`com.example.hello_world` must be the code I've written. The other two folders are filled with obfuscated classes, probably part of the android library. My class looks a little bit different, this is the result of the optimation done by the java compiler.
 
 ```java
 //original code:
@@ -107,25 +107,25 @@ public class MainActivity extends AppCompatActivity {
 
 A few things that changed:
 
-- The object ids where changed to their corresponding number in the `enum`. 
+- The object ids were changed to their corresponding number in the `enum`.
 - Some variable names changes (`tv` to `textView`)
 - A redundant cast was placed.
 - `@override` was removed.
 - All useless empty lines where removed.
 
-This makes reversing a bigger app a lot more difficult, because  mainly the variable names can tell a lot, without these the code becomes a lot less clear.
+This makes reversing a bigger app a lot more difficult because  mainly the variable names can tell a lot, without these the code becomes a lot less clear.
 
 ## Ionic
 
-Alright, now we know the structure of a normal java-based android app, let's look at the other breed of android apps: ionic. Ionic is based of `nodejs` and `angular` and uses cordova for the native class to android and ios. You build ionic in html and js, so I wonder whether it compiles to java or not.
+Alright, now we know the structure of a normal Java-based Android app, let's look at the other breed of android apps: ionic. Ionic is based on `nodejs` and `angular` and uses Cordova for the native class to android and ios. You build ionic in HTML and JS, so I wonder whether it compiles to java or not.
 
 Alright, so the first steps are the same, `dex2jar` and `jd-gui`
 
 ![webview](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/webview.png)
 
-Webview? As expected, it did not compile to a java app, this is only the wrapper that executes html and js files. So, let's try to find the js files.
+Webview? As expected, it did not compile to a java app, this is only the wrapper that executes HTML and js files. So, let's try to find the js files.
 
-After some `greb`-ing, I found the folder `assets/www` filled with js-files and a `index.html`. Perfect, now we have to check whether or not these are the js-files that I wrote, so I searched for a literal string that I am sure is present in the source:
+After some `greb`-ing, I found the folder `assets/www` filled with JS-files and an `index.html`. Perfect, now we have to check whether or not these are the js-files that I wrote, so I searched for a literal string that I am sure is present in the source:
 
 ![js](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/android/js.png)
 

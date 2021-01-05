@@ -22,3 +22,7 @@ title: Portfolio
 - [Workspace](workspace/)
 - [Hack The Box](htb/)
 - [phisical](phisical/)
+- [advent of ctf](advent/)
+- [Blue VS Red event](bvsr/)
+- [internship and future](intern/)
+- [phishing](phishing/)

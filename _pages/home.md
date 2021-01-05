@@ -16,9 +16,9 @@ title: Minor Security Red Team
 
 This is the portfolio for my Minor in Cyber Security. Here you can find the Personal Development Evaluation per criteria.
 
-### Personal Development - Beginning
+### Personal Development - Proficient
 
-I have a filled portfolio with outcomes and got positive feedback from my teachers. Not all learning activities and personal development have been demonstrated, but I am working on this.
+I have a filled portfolio with outcomes and got positive feedback from my teachers.
 
 ### Technical skills - Proficient
 
@@ -26,11 +26,11 @@ My technical skills have been proven in my portfolio thus far, social engineerin
 
 ### Procedural skills - Proficient
 
-I start every subject with research, this is evident in my portfolio, as I give some background on the subject before I dive into the practical part.
+I start every subject with a research, this is evident in my portfolio, as I give some background on the subject before I dive into the practical part.
 
-### Technical R&D - Beginning
+### Technical R&D - Proficient
 
-My portfolio contains a chapter about my work on the R&D project, however, this chapter is brand new and can be improved upon.
+My portfolio contains a chapter about my work on the R&D project, exactly describing what I have done in the R&D project.
 
 ### Methodical R&D project - Proficient
 

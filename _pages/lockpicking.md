@@ -20,7 +20,7 @@ Lock picking is as old as locks themselves. To pick a lock is the subtle art of 
 
 ## How do locks work?
 
-In order to be able to pick a lock, you first need to understand how it works, as with any form of hacking. I will explain the mechanics of a simple pin-tumbler padlock using my see-through practice-lock. First let's get a cheatsheet, this page will contain a lot of lingo, so it is important to understand all the names.
+To be able to pick a lock, you first need to understand how it works, as with any form of hacking. I will explain the mechanics of a simple pin-tumbler padlock using my see-through practice-lock. First, let's get a cheat sheet, this page will contain a lot of lingoes, so it is important to understand all the names.
 
 ![lingo](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/anatomy.jpg)
 
@@ -36,23 +36,23 @@ And here the shackle is open and the latches are moved inwards.
 
 ![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/shackle_open.jpg)
 
-Now, let's move on to the lock-mechanism itself: The Core. The core is simply a brass cylinder with a key-way and some holes. The holes in the core line up with long holes in the body, inside these holes are the pins, counterpins and the springs.
+Now, let's move on to the lock-mechanism itself: The Core. The core is simply a brass cylinder with a key-way and some holes. The holes in the core line up with long holes in the body, inside these holes, are the pins, counter pins and the springs.
 
 ![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/pins.jpg)
 
-The pins is usually a small cylinder with one flat side and one pointy side. The pointy side rests on the key once it is inserted. The other side is in contact with the counterpin. The pins length usually varies. The counterpin is a small cylinder with two flat sides. It rests on the pin and the spring, the counterpins are all the same length. lastly, the spring is there to keep pressure on the pins, so they cannot move around in the body.
+The pins is usually a small cylinder with one flat side and one pointy side. The pointy side rests on the key once it is inserted. The other side is in contact with the counter pin. The pins length usually varies. The counter pin is a small cylinder with two flat sides. It rests on the pin and the spring, the counter pins are all the same length. lastly, the spring is there to keep the pressure on the pins, so they cannot move around in the body.
 
-To open a lock, you insert the key. This key lifts the pins to the correct hight, so that all the pins are flush with the core and none of the counterpins are inside the core. This allows the core to move freely, and thus open the lock.
+To open a lock, you insert the key. This key lifts the pins to the correct height so that all the pins are flush with the core and none of the counter pins are inside the core. This allows the core to move freely, and thus open the lock.
 
 ## Picking
 
-So, now we know how a simple lock works, but how do you pick one? We are going to need these tools to open the lock. On the right you see two tension tools and on the right two picks. We need one of these tools to pick a lock.
+So, now we know how a simple lock works, but how do you pick one? We are going to need these tools to open the lock. On the right, you see two tension tools and on the right two picks. We need one of these tools to pick a lock.
 
 ![shackle_open](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/tools.jpg)
 
-You insert the end of the tension-tool inside the keyway. Then you apply some clockwise tension to the core, not to much tension or the pins won't move. This is something that comes with practice, since it is very hard to explain how much tension you need to apply.
+You insert the end of the tension-tool inside the keyway. Then you apply some clockwise tension to the core, not to much tension or the pins won't move. This is something that comes with practice since it is very hard to explain how much tension you need to apply.
 
-Then you insert the pick and push every pin in, one by one. If you push the 'correct' pin, the counterpin will get caught on the core and the core will rotate ever so slightly. Once every counterpin is caught, the core will be able to rotate.
+Then you insert the pick and push every pin in, one by one. If you push the 'correct' pin, the counter pin will get caught on the core and the core will rotate ever so slightly. Once every counter pin is caught, the core will be able to rotate.
 
 ![howto](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/howto.gif)
 
@@ -61,9 +61,9 @@ Then you insert the pick and push every pin in, one by one. If you push the 'cor
 Sometimes a pin won't move, this is because there is too much friction between the pin and the core, you should relive a little bit of tension to solve this, but not too much, or all your pins will fall back.
 Another technique to open a lock is raking, a rake is like a pick, but with a lot of bumps. Raking looks a lot like picking, but you push all the pins up at the same time, allowing you to find the correct pins much faster.
 
-## My lockpicking and dissembly
+## My lockpicking and disassembly
 
-So, now we know how to pick, let's pick and dissemble some locks.
+So, now we know how to pick, let's pick and disassemble some locks.
 
 ### Practice
 
@@ -105,7 +105,7 @@ As you can see, it has small plates with springs and a ball-bearing, to keep the
 
 ![waver_core_parts](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/waver_core_parts.jpg)
 
-The key goes through the small holes in the wavers, pushing it up. Underneath the small hook on the waver is a spring with varying lengths, this spring defines the height for the key. Waver locks are very easy to pick because they are very shallow, allowing for very little key combinations and thus they are very rakable.
+The key goes through the small holes in the wavers, pushing it up. Underneath the small hook on the waver is a spring with varying lengths, this spring defines the height for the key. Waver locks are very easy to pick because they are very shallow, allowing for very little key combinations and thus they are very rackable.
 
 ### Pin tumbler lock
 
@@ -115,7 +115,7 @@ The lock:
 
 ![pin_lock](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/pin_lock.jpg)
 
-Once you remove the ring at the back of the core, you can slide the core out. Just like any other pin lock, there are pins, counterpins and springs. only this one has slightly different counterpins:
+Once you remove the ring at the back of the core, you can slide the core out. Just like any other pin lock, there are pins, counter pins and springs. only this one has slightly different counter pins:
 
 ![all_pins](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/all_pins.jpg)
 
@@ -139,4 +139,4 @@ Even the part around the core that holds the pins in place is made of plastic!
 
 ![core_middle](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/lock/core_middle.jpg)
 
-This means that you can easily drill out the pins, without hitting the core. Without the counterpins the core can rotate freely. This is a major vulnerability and makes this lock very weak.
+This means that you can easily drill out the pins, without hitting the core. Without the counter pins the core can rotate freely. This is a major vulnerability and makes this lock very weak.

@@ -16,23 +16,23 @@ title: Covert Channels
 
 ## Introduction
 
-Covert channels is a way to hide and/or obfuscate your connection. This can be done by minimizing your communication, or by tunneling the traffic through different protocols.
+Covert channels are a way to hide and/or obfuscate your connection. This can be done by minimizing your communication, or by tunnelling the traffic through different protocols.
 
 ## ICMP Tunneling
 
-One way of setting up a covert channeling is by using ICMP tunneling. This wraps the data is a ICMP packet, these packets are allowed on most networks.
+One way of setting up a covert channelling is by using ICMP tunnelling. This wraps the data is an ICMP packet, these packets are allowed on most networks.
 
-Basically, a ping packet has a lot of reserved space, which is often filled with a buffer of null-bytes. This empty space can be used to send data over. This cannot be a lot, but a simple shell works.
+A ping packet has a lot of reserved space, which is often filled with a buffer of null-bytes. This space can be used to send data over. This cannot be a lot, but a simple shell works.
 
 ![ping](https://joeladams.nl/wp-content/uploads/2020/09/ICMP-info.png)
 
-Say, you compromise a machine within a network, but you know that the network is very strict on all tcp connections. Then we tunnel the traffic to ICMP, an allowed protocol, so we can control our victim.
+Say, you compromise a machine within a network, but you know that the network is very strict on all TCP connections. Then we tunnel the traffic to ICMP, an allowed protocol, so we can control our victim.
 
 ![network](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/covert/network.png)
 
-First, I wanted to manually make a simple script that communicates over ICMP. This is the end result of searching and debugging. ([source](https://medium.com/@galolbardes/learn-how-easy-is-to-bypass-firewalls-using-dns-tunneling-and-also-how-to-block-it-3ed652f4a000))
+First, I wanted to manually make a simple script that communicates over ICMP. This is the result of searching and debugging. ([source](https://medium.com/@galolbardes/learn-how-easy-is-to-bypass-firewalls-using-dns-tunneling-and-also-how-to-block-it-3ed652f4a000))
 
-Client (executed on victim)
+Client (executed on the victim)
 
 ```python
 #!/usr/bin/env python3
@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
 ```
 
-basically, this is a extremely simple reverse shell over ICMP. Both scripts need to be started as root in order to use the pinger on Linux. Then the C2 server send a ping request with a command, this command is executed and a reply with the result of the executing is send back. As you can see on the wireshark result (captured on Kali), the server send 2 replies. The first one is the default reply send by the victim machine itself. The second reply is send by the script, this contains the result of the executed command.
+This is an extremely simple reverse shell over ICMP. Both scripts need to be started as root to use the pinger on Linux. Then the C2 server sent a ping request with a command, this command is executed and a reply with the result of the executing is sent back. As you can see on the Wireshark result (captured on Kali), the server sent 2 replies. The first one is the default reply sent by the victim machine itself. The second reply is sent by the script, this contains the result of the executed command.
 
 ![wireshark](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/covert/wireshark.png)
 
@@ -107,19 +107,19 @@ sudo ptunnnel -v 4
 sudo ptunnel  -p 192.168.241.131 -lp 8000 -da 192.168.241.132 -dp 22 -c eth0
 ```
 
-Once again, all of the command need to run as root. On the server you start a listener to listen for the incoming connection. The `-v 4` is to show the most output for debugging. Then, the second command needs to be executed on the client, in this case Kali.
+Once again, all of the commands need to run as root. On the server, you start a listener to listen for the incoming connection. The `-v 4` is to show the most output for debugging. Then, the second command needs to be executed on the client, in this case, Kali.
 
-- `-p` The ip of the listening server
+- `-p` The IP of the listening server
 
-- `-lp` The localport to forward
+- `-lp` The local port to forward
 
 - `-da` The remote machine to forward the traffic to (target in this case)
 
-- `-dp` The remote port of target
+- `-dp` The remote port of the target
 
 - `-c` The interface of the local machine to use.
 
-This creates a port forward form my Kali port 8000 to the target port 22. Now I can communicate with target over SSH through ICMP
+This creates a port forward form my Kali port 8000 to the target port 22. Now I can communicate with the target over SSH through ICMP
 
 ![connected](https://raw.githubusercontent.com/Riqky/riqky.github.io/master/assets/images/covert/connected.png)
 
