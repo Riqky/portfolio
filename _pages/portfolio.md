@@ -26,3 +26,4 @@ title: Portfolio
 - [Blue VS Red event](bvsr/)
 - [internship and future](intern/)
 - [phishing](phishing/)
+- [Methodical skills](method/)

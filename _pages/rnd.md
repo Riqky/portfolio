@@ -32,11 +32,11 @@ My role in this research was helping to look for good guidelines and to order th
 
 ## Methodical
 
-I have worked on the pentest for both the Airscrubber and the smart screen. In both of these pentests we used a methodical approach to make sure that we work properly together. For the Airscrubber, we all started on the webpage, with different parts. for instance, I started with trying to inject payloads and then I looked into the authorization. Then we got into the other part then the webpage, the MQTT server. Were I worked with one other to build a script that can send different data to the system. There I found out that you can DOS it with a string.
+I have worked on the pentest for both the Airscrubber and the smart screen. In both of these pentests we used a methodical approach to make sure that we work properly together. For the Airscrubber, we all started on the webpage, with different parts. for instance, I started with trying to inject payloads and then I looked into the authorization. Then we got into the other part then the webpage, the MQTT server. Where I worked with one other to build a script that can send different data to the system. There I found out that you can DOS it with a string.
 
-The smartboard needed a different approach because it does not have a single interface. We started with running a full-on port-scan. From there we divided the work in services, we started on ADB together and then I got into the updater and Marc into UPnP. From there we worked futher and switched the ports up, always communicating on what we are doing.
+The smartboard needed a different approach because it does not have a single interface. We started by running a full-on port-scan. From there we divided the work in services, we started on ADB together and then I got into the updater and Marc into UPnP. From there we worked further and switched the ports up, always communicating on what we are doing.
 
-I also have a page talking about my methodical approach of HTB: [Link](https://raw.githubusercontent.com/Riqky/riqky.github.io/portfolio/htb_method).
+I also have a page talking about my methodical approach of HTB: [Link](https://raw.githubusercontent.com/Riqky/riqky.github.io/portfolio/method).
 
 ## Communication and feedback
 
